@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/sai-view/static/css/main.51a60fb2.css",
-    "main.js": "/sai-view/static/js/main.46de2407.js",
+    "main.js": "/sai-view/static/js/main.cb2783cf.js",
     "static/js/206.220e51af.chunk.js": "/sai-view/static/js/206.220e51af.chunk.js",
     "static/media/2136.jpg": "/sai-view/static/media/2136.9ab502aabb248129f475.jpg",
     "static/media/usericons.jpg": "/sai-view/static/media/usericons.1360bed9da8958440802.jpg",
@@ -38,6 +38,6 @@
   },
   "entrypoints": [
     "static/css/main.51a60fb2.css",
-    "static/js/main.46de2407.js"
+    "static/js/main.cb2783cf.js"
   ]
 }
