@@ -1,10 +1,10 @@
 import React, { useRef, useState, Suspense } from "react";
 import styled from 'styled-components';
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial, Preload } from "@react-three/drei";
-import * as random from "maath/random/dist/maath-random.esm";
-import ChatBot from './ChatBot'
 import python from "../images/python-2.png"
+import azure from "../images/azuree.png"
+import shopify from "../images/shopifyff.jpeg"
+import wordpress from "../images/wordpress.jpg"
 import go from "../images/go-1-.png"
 import api from "../images/api.png"
 import java from "../images/java.svg"
@@ -22,17 +22,9 @@ import figma from "../images/figma.avif"
 import react from "../images/reactt.png"
 import Angular from "../images/angular.png"
 import Mac from "./Mac"
-import { MeshDistortMaterial, OrbitControls, Sphere, Stage, PerspectiveCamera } from "@react-three/drei";
+import { OrbitControls, Stage, PerspectiveCamera } from "@react-three/drei";
+import StyledStarsCanvas from "../canva/Stars";
 
-
-
-// Canvas with stars animation
-const StyledCanvasWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
-`;
 
 const MySelfStyles = styled.div`
   height: 100vh;
@@ -43,6 +35,9 @@ const MySelfStyles = styled.div`
   justify-content: flex-start; /* Align content to the top */
   background-color: black;
   position: relative;
+  @media only screen and (max-width: 960px) {
+    height: 200vh;
+  }
 
   @media only screen and (max-width: 768px) {
     height: 200vh;
@@ -51,7 +46,7 @@ const MySelfStyles = styled.div`
 
 const Heading = styled.h2`
   font-size: 2rem;
-  margin-top: 20px; /* Space from the top */
+  margin-top: 20px; 
   margin-bottom: 30px; /* Add gap below the heading */
   z-index: 2; /* Ensure it's above the background */
   text-align: center;
@@ -76,7 +71,6 @@ const HeroBg = styled.div`
   }
 `;
 
-
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -97,7 +91,7 @@ const Container = styled.div`
 const LeftSection = styled.div`
   flex: 1;
   padding: 10px;
-  position: relative; /* Set relative positioning */
+  position: relative;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   display: flex;
@@ -105,14 +99,12 @@ const LeftSection = styled.div`
   gap: 10px;
   max-width: 600px;
   height: 80%;
-  overflow: auto; /* Enable scrolling when content overflows */
   
   @media (max-width: 960px) {
-    width: 100%; /* Make it full width on smaller screens */
+    width: 100%;
     padding: 15px;
   }
 `;
-
 
 const RightSection = styled.div`
   flex: 1;
@@ -120,9 +112,6 @@ const RightSection = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 960px) {
-    width: 100%; /* Full width on smaller screens */
-  }
 `;
 
 const NavBar = styled.nav`
@@ -135,12 +124,22 @@ const NavBar = styled.nav`
 `;
 
 const BoxTopSection = styled.div`
-  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  background: rgba(255, 255, 255, 0.1);
   color: white;
   padding: 10px;
   font-size: 1.2rem;
   font-weight: bold;
-  border-radius: 10px; /* Adjusted border-radius */
+  border-radius: 10px;
+  flex-shrink: 0; /* Prevents shrinking */
+`;
+
+const BoxGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Auto-adjust grid columns */
+  gap: 10px;
+  max-height: 550px;
+  overflow-y: auto; /* Vertical scrolling for the grid */
+  padding-right: 5px;
 `;
 
 const Box = styled.div`
@@ -150,35 +149,34 @@ const Box = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 120px;
+  justify-content: space-between; /* Space between image and text */
+  height: 100px; /* Adjust height to fit content */
   text-align: center;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 10px;
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 
   &:hover {
-    transform: scale(1.1); /* Scaling effect on hover */
-    transition: transform 0.3s ease-in-out;
+    transform: scale(1.1);
+  }
+
+  p {
+    margin: 10px 0 0; /* Space above text */
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    overflow-wrap: break-word; /* Ensure text wraps within box */
+    max-width: 100%; /* Prevent text overflow */
   }
 `;
 
-const Button = styled.button`
-  background: linear-gradient(135deg, #ff6a00, #ff3a3a);
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-  padding: 15px;
-  height: 60px;
-  border-radius: 10px; /* Adjusted border-radius */
-
-  &:hover {
-    background: linear-gradient(135deg, #ff3a3a, #ff6a00);
-  }
+const Image = styled.img`
+  max-width: 60px; /* Set image size */
+  max-height: 60px;
+  margin-bottom: 10px; /* Add space between image and text */
 `;
-
 
 const Tab = styled.div`
   cursor: pointer;
@@ -191,26 +189,6 @@ const Tab = styled.div`
     background-color: rgba(255, 58, 58, 0.8); /* Lighter red on hover */
   }
 `;
-
-const BoxGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 3 equal columns */
-  gap: 10px; /* Space between boxes */
-  flex: 1; /* Allow the grid to take remaining space */
-`;
-
-
-const Image = styled.img`
-  max-width: 50px; /* Adjust image size */
-  max-height: 50px;
-`;
-
-const Text = styled.p`
-  font-size: 12px; /* Small text */
-  margin-top: 5px; /* Space between image and text */
-`;
-
-
 
 const RotatingImage = styled.img`
   animation: rotate 3s linear infinite; /* Continuous rotation */
@@ -226,47 +204,6 @@ const RotatingImage = styled.img`
     }
   }
 `;
-
-
-
-const Stars = (props) => {
-  const ref = useRef();
-  const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(5000), { radius: 1.2 })
-  );
-
-  useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 10;
-    ref.current.rotation.y -= delta / 15;
-  });
-
-  return (
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
-        <PointMaterial
-          transparent
-          color="#f272c8"
-          size={0.002}
-          sizeAttenuation={true}
-          depthWrite={false}
-        />
-      </Points>
-    </group>
-  );
-};
-
-const StyledStarsCanvas = () => {
-  return (
-    <StyledCanvasWrapper>
-      <Canvas camera={{ position: [0, 0, 1] }}>
-        <Suspense fallback={null}>
-          <Stars />
-        </Suspense>
-        <Preload all />
-      </Canvas>
-    </StyledCanvasWrapper>
-  );
-};
 
 const Skills = () => {
 
@@ -291,11 +228,9 @@ const Skills = () => {
         <LeftSection>
           <BoxTopSection>
             <NavBar>
-              <Tab>Full Stack Tech Set</Tab>
+              <Tab>MY SKILL SET</Tab>
             </NavBar>
           </BoxTopSection>
-
-          {/* Grid of Boxes */}
           <BoxGrid>
             <Box
               onMouseEnter={() => handleMouseEnter("web")}
@@ -304,11 +239,15 @@ const Skills = () => {
               <Image src={python} alt="Python Logo" />
               <p>Python</p>
             </Box>
+            <Box>
+              <Image src={Angular} alt="Python Logo" />
+              <p>Angular</p>
+            </Box>
             <Box
               onMouseEnter={() => handleMouseEnter("web")}
               onMouseLeave={handleMouseLeave}
             >
-              <Image src={go} alt="Python Logo" />
+              <Image src={go} alt="Python Logo" style={{ height: '70px', width: '70px' }} />
               <p>Go Lang</p>
             </Box>
             <Box
@@ -319,17 +258,10 @@ const Skills = () => {
               <p>Java</p>
             </Box>
             <Box
-              onMouseEnter={() => handleMouseEnter("web")}
-              onMouseLeave={handleMouseLeave}
-            >
-              <Image src={node} alt="Python Logo" />
-              <p>Node</p>
-            </Box>
-            <Box
               onMouseEnter={() => handleMouseEnter("Mobile")}
               onMouseLeave={handleMouseLeave}
             >
-              <Image src={reactnative} alt="Python Logo" />
+              <Image src={reactnative} alt="Python Logo" style={{ height: '100px', width: '100px' }} />
               <p>React Native</p>
             </Box>
             <Box
@@ -339,32 +271,38 @@ const Skills = () => {
               <Image src={Vue} alt="Python Logo" />
               <p>VUE JS</p>
             </Box>
-            <Box
-              onMouseEnter={() => handleMouseEnter("web")}
-              onMouseLeave={handleMouseLeave}
-            >
-              <Image src={scala} alt="Python Logo"  />
-              <p>Scala</p>
-            </Box>
-            <Box>
-              <Image src={Angular} alt="Python Logo" />
-              <p>Angular</p>
-            </Box>
-            <Box>
-              <Image src={AWS} alt="Python Logo" />
-              <p>AWS</p>
-            </Box>
-            <Box>
-              <Image src={GCP} alt="Python Logo" />
-              <p>GCP</p>
-            </Box>
             <Box>
               <Image src={react} alt="Python Logo" />
               <p>React</p>
             </Box>
+
+            <Box>
+              <Image src={AWS} alt="Python Logo" />
+              <p>AWS</p>
+            </Box>
+
+            <Box>
+              <Image src={azure} alt="Python Logo" />
+              <p>Azure</p>
+            </Box>
+            <Box
+              onMouseEnter={() => handleMouseEnter("web")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Image src={node} alt="Python Logo" style={{ height: '50px', width: '80px' }} />
+              <p>Node JS</p>
+            </Box>
+
             <Box>
               <Image src={javascri} alt="Python Logo" />
               <p>Java Script</p>
+            </Box>
+            <Box
+              onMouseEnter={() => handleMouseEnter("web")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Image src={scala} alt="Python Logo" style={{ height: '100px', width: '100px' }} />
+              <p>Scala</p>
             </Box>
             <Box>
               <Image src={psql} alt="Python Logo" />
@@ -378,29 +316,42 @@ const Skills = () => {
               <Image src={figma} alt="Python Logo" />
               <p>FIGMA</p>
             </Box>
+            <Box>
+              <Image src={GCP} alt="Python Logo" />
+              <p>GCP</p>
+            </Box>
+            <Box>
+              <Image src={shopify} alt="Python Logo" />
+              <p>Shopify </p>
+            </Box>
+
+            <Box>
+              <Image src={wordpress} alt="Python Logo" />
+              <p>Wordpress </p>
+            </Box>
           </BoxGrid>
         </LeftSection>
         <RightSection>
           {hoveredBox === "Mobile" ? (
-          <RotatingImage src={api} alt="Rotated Image" />
-          ):(
-          <Canvas style={{ width: "450px", height: "480px" }}>
-            {/* Lights */}
-            <ambientLight intensity={0.9} />
-            <directionalLight position={[5, 5, 5]} intensity={1} />
-            <spotLight position={[5, 5, 5]} angle={5} intensity={1.5} castShadow />
+            <RotatingImage src={api} alt="Rotated Image" />
+          ) : (
+            <Canvas style={{ width: "450px", height: "480px" }}>
+              {/* Lights */}
+              <ambientLight intensity={0.9} />
+              <directionalLight position={[5, 5, 5]} intensity={1} />
+              <spotLight position={[5, 5, 5]} angle={5} intensity={1.5} castShadow />
 
-            {/* Rocket */}
-            <Stage environment="night" intensity={0.5}>
-              <Mac />
-            </Stage>
+              {/* Rocket */}
+              <Stage environment="night" intensity={0.5}>
+                <Mac />
+              </Stage>
 
-            {/* Camera */}
-            <PerspectiveCamera position={[100,0,1.8]} zoom={0.8} makeDefault/>
+              {/* Camera */}
+              <PerspectiveCamera position={[100, 0, 1.8]} zoom={0.8} makeDefault />
 
-            {/* Controls */}
-            <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
-          </Canvas>
+              {/* Controls */}
+              <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
+            </Canvas>
           )}
         </RightSection>
       </Container>

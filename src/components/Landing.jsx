@@ -1,11 +1,10 @@
-import React, { Suspense } from "react";
+import React from "react";
 import styled from "styled-components";
 import HeaderSection from "./HeaderSection";
 import Typewriter from "typewriter-effect";
 import { Bio } from "../data/constants";
 import StarCanvas from "../canva/Stars";
-import { MeshDistortMaterial, Sphere } from "@react-three/drei";
-import rb from "../images/herooooo.png";
+import rb from "../images/landdd.webp";
 
 const Section = styled.div`
   height: 100vh;
@@ -17,7 +16,7 @@ const Section = styled.div`
   background-color: black;
 
   @media only screen and (max-width: 768px) {
-    height: 200vh;
+    height: 100vh;
   }
 `;
 
@@ -109,15 +108,15 @@ const Right = styled.div`
 `;
 
 const Img = styled.img`
-  width: 640px;
-  height: 530px;
-  border-radius: 100%; /* Make the image round */
-  object-fit: cover;
+  width: 300px; /* Default width for the image */
+  height: 300px; /* Default height matching the width */
+  border-radius: 50%; /* Ensures the image is perfectly round */
+  object-fit: cover; /* Ensures the image content fits within the circular frame */
   animation: animate 2s infinite ease alternate;
 
-  @media only screen and (max-width: 768px) {
-    width: 300px;
-    height: 300px;
+  @media only screen and (min-width: 769px) {
+    width: 640px;
+    height: 640px; /* Ensure width and height are the same */
   }
 
   @keyframes animate {
@@ -126,6 +125,7 @@ const Img = styled.img`
     }
   }
 `;
+
 
 const HeroBg = styled.div`
   position: absolute;

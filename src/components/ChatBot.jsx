@@ -1,9 +1,7 @@
 import React, { useState,useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import { FaPaperPlane } from "react-icons/fa"; // Import an icon from react-icons
 import iphonewallpaper from "../images/phonewall.jpg"
 import sicon from "../images/usericons.jpg"
-import { color } from "framer-motion";
 
 const wave = keyframes`
   0% { transform: rotate(0deg); }
@@ -13,11 +11,10 @@ const wave = keyframes`
   100% { transform: rotate(0deg); }
 `;
 
-
 const InnerFrame = styled.div`
   width: 300px;
   height: 620px;
-  background-color: rgba(0, 0, 0, 0.7); /* Transparent background with dark overlay */
+  background-color: rgba(0, 0, 0, 0.7); 
   border-radius: 30px;
   position: relative;
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
@@ -78,10 +75,6 @@ const Carrier = styled.div`
   text-align: left; /* Align carrier text to the left */
 `;
 
-const Signal = styled.div`
-  text-align: left; /* Align signal icon to the left */
-`;
-
 const Battery = styled.div`
   text-align: left; /* Align battery icon to the left */
 `;
@@ -94,8 +87,6 @@ const Time = styled.div`
   padding: 40px;
   /* Adjust margin to position the time correctly */
 `;
-
-
 
 const StartButton = styled.button`
   margin-top: 80px;
@@ -112,8 +103,6 @@ const StartButton = styled.button`
     background-color: #0056b3;
   }
 `;
-
-
 
 const SideButton = styled.div`
   width: 6px;

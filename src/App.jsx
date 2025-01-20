@@ -26,6 +26,9 @@ const Section = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @media only screen and (max-width: 768px) {
+    min-height: 30vh;
+  }
 `;
 
 function App() {

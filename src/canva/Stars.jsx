@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const StyledCanvasWrapper = styled.div`
   width: 100%;
-  height: auto;
+  height: 100%;
   position: absolute;
   inset: 0;
 `;
@@ -14,39 +14,39 @@ const StyledCanvasWrapper = styled.div`
 const Stars = (props) => {
   const ref = useRef();
   const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(5000), { radius: 1.2 })
+      random.inSphere(new Float32Array(5000), { radius: 1.2 })
   );
 
   useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 10;
-    ref.current.rotation.y -= delta / 15;
+      ref.current.rotation.x -= delta / 10;
+      ref.current.rotation.y -= delta / 15;
   });
 
   return (
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
-        <PointMaterial
-          transparent
-          color="#f272c8"
-          size={0.002}
-          sizeAttenuation={true}
-          depthWrite={false}
-        />
-      </Points>
-    </group>
+      <group rotation={[0, 0, Math.PI / 4]}>
+          <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
+              <PointMaterial
+                  transparent
+                  color="#f272c8"
+                  size={0.002}
+                  sizeAttenuation={true}
+                  depthWrite={false}
+              />
+          </Points>
+      </group>
   );
 };
 
 const StyledStarsCanvas = () => {
   return (
-    <StyledCanvasWrapper>
-      <Canvas camera={{ position: [0, 0, 1] }}>
-        <Suspense fallback={null}>
-          <Stars />
-        </Suspense>
-        <Preload all />
-      </Canvas>
-    </StyledCanvasWrapper>
+      <StyledCanvasWrapper>
+          <Canvas camera={{ position: [0, 0, 1] }}>
+              <Suspense fallback={null}>
+                  <Stars />
+              </Suspense>
+              <Preload all />
+          </Canvas>
+      </StyledCanvasWrapper>
   );
 };
 

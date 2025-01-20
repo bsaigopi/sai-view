@@ -1,17 +1,7 @@
-import React, { useRef, useState, Suspense } from "react";
+import React from "react";
 import styled from 'styled-components';
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial, Preload } from "@react-three/drei";
-import * as random from "maath/random/dist/maath-random.esm";
 import ChatBot from './ChatBot'
-
-// Canvas with stars animation
-const StyledCanvasWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
-`;
+import StyledStarsCanvas from "../canva/Stars"; 
 
 const MySelfStyles = styled.div`
   height: 100vh;
@@ -22,9 +12,12 @@ const MySelfStyles = styled.div`
   justify-content: flex-start; /* Align content to the top */
   background-color: black;
   position: relative;
+  @media only screen and (max-width: 960px) {
+    height: 200vh;
+  }
 
   @media only screen and (max-width: 768px) {
-    height: 200vh;
+    height: 100%;
   }
 `;
 
@@ -80,12 +73,6 @@ const RightSection = styled.div`
   padding: 20px;
   max-width: 500px; /* Limit the width for better alignment */
 `;
-
-const Text = styled.p`
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin: 0; /* Remove unnecessary margin */
-`;
 const WhatidoText = styled.p`
   font-size: 1.0rem; /* Slightly larger font size for readability */
   font-family: 'Arial', sans-serif; /* Clean, modern sans-serif font */
@@ -100,80 +87,44 @@ const WhatidoText = styled.p`
 
 const BoxContainer = styled.div`
   display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    justify-content: center; // Add this line
-    align-items: center; // Add this line
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 20px; /* Space between boxes */
+  justify-content: center; /* Center grid items horizontally */
+  align-items: start; /* Align grid items vertically */
 
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr; /* Stack boxes vertically for smaller screens */
-    }
-  `;
-
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; /* Stack boxes vertically for smaller screens */
+  }
+`;
 const Box = styled.div`
   background: linear-gradient(135deg, #ff6a00, #ff3a3a); /* Gradient from orange to red */
   padding: 20px;
   border-radius: 12px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: center; /* Center Icon and Text vertically */
   color: white; /* White text for good contrast */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 `;
 
 const Icon = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #ff6347; /* Tomato red for a vibrant contrast */
+  width: 55px;
+  height: 55px;
+  border-radius: 55%;
+  background-color: #fdddd8; /* Tomato red for a vibrant contrast */
   display: flex;
-  align-items: center;
-  justify-content: center;
+  color: black;
+  font-weight: bold;
+  align-items: center; /* Center icon content vertically */
+  justify-content: center; /* Center icon content horizontally */
+  margin-right: 15px; /* Space between Icon and Text */
 `;
 
 const BoxText = styled.p`
   font-size: 1rem;
-  margin-left: 15px;
+  margin: 0; /* Remove default margins */
+  font-weight: 500; /* Slightly bold for better readability */
+  line-height: 1; /* Ensure proper line-height */
 `;
-
-const Stars = (props) => {
-  const ref = useRef();
-  const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(5000), { radius: 1.2 })
-  );
-
-  useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 10;
-    ref.current.rotation.y -= delta / 15;
-  });
-
-  return (
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
-        <PointMaterial
-          transparent
-          color="#f272c8"
-          size={0.002}
-          sizeAttenuation={true}
-          depthWrite={false}
-        />
-      </Points>
-    </group>
-  );
-};
-
-const StyledStarsCanvas = () => {
-  return (
-    <StyledCanvasWrapper>
-      <Canvas camera={{ position: [0, 0, 1] }}>
-        <Suspense fallback={null}>
-          <Stars />
-        </Suspense>
-        <Preload all />
-      </Canvas>
-    </StyledCanvasWrapper>
-  );
-};
 
 const MySelf = () => {
   return (
@@ -216,8 +167,8 @@ const MySelf = () => {
               <BoxText>Cloud Integration</BoxText>
             </Box>
             <Box>
-              <Icon>UI</Icon>
-              <BoxText>UI/UX Design</BoxText>
+              <Icon>QA</Icon>
+              <BoxText>Quality control</BoxText>
             </Box>
             <Box>
               <Icon>UI</Icon>

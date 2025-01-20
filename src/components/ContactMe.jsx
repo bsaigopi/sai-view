@@ -1,22 +1,12 @@
 import React, { useRef, useState, Suspense } from "react";
 import styled from "styled-components";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial, Preload } from "@react-three/drei";
-import * as random from "maath/random/dist/maath-random.esm";
-import apple from "../images/wall1.jpg";
-import { FaUser, FaEnvelope, FaRegComment } from 'react-icons/fa'; // Replace FaMessage with FaRegComment
-import { MeshDistortMaterial, OrbitControls, Sphere, Stage, PerspectiveCamera } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { FaUser, FaEnvelope, FaRegComment } from 'react-icons/fa'; 
+import {  OrbitControls, Stage, PerspectiveCamera } from "@react-three/drei";
 import Rocket from './Modelrocketemail'
 import { motion, AnimatePresence } from "framer-motion";
+import StyledStarsCanvas from "../canva/Stars";
 
-
-// Styled Components
-const StyledCanvasWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
-`;
 
 const WorkStyles = styled.div`
   height: 100vh;
@@ -27,6 +17,9 @@ const WorkStyles = styled.div`
   justify-content: flex-start;
   background-color: black;
   position: relative;
+  @media only screen and (max-width: 960px) {
+    height: 200vh;
+  }
 `;
 
 const Heading = styled.h2`
@@ -54,15 +47,14 @@ const HeroBg = styled.div`
 
 const Container = styled.div`
   display: flex;
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
+  justify-content: center; 
+  align-items: center; 
   width: 100%;
   max-width: 1200px;
   z-index: 2;
   padding: 20px;
   gap: 30px;
-  height: 100%; /* Ensures the container takes full height */
-
+  height: 100%; 
   @media (max-width: 960px) {
     flex-direction: column;
     gap: 20px;
@@ -85,7 +77,7 @@ const LeftSection = styled.div`
   width: 100%;
   box-sizing: border-box;
   height: 65vh;
-  
+
   form {
     display: flex;
     flex-direction: column;
@@ -101,16 +93,17 @@ const LeftSection = styled.div`
     font-size: 18px;
     color: white;
     text-align: left;
-    padding-left: 40px; /* Space for icon */
+    padding-left: 40px;
   }
 
   .input-container {
     position: relative;
     width: 100%;
-    margin-bottom: 20px; /* Add space between inputs */
+    margin-bottom: 20px;
   }
 
-  input, textarea {
+  input,
+  textarea {
     width: 100%;
     padding: 15px 20px;
     border-radius: 10px;
@@ -130,7 +123,7 @@ const LeftSection = styled.div`
   textarea {
     height: 120px;
     resize: vertical;
-    padding-left: 40px; /* Add space for icon inside textarea */
+    padding-left: 40px;
   }
 
   button {
@@ -141,6 +134,8 @@ const LeftSection = styled.div`
     transition: 0.3s;
     padding: 15px;
     height: 60px;
+    border: none;
+    border-radius: 8px;
   }
 
   button:hover {
@@ -153,32 +148,38 @@ const LeftSection = styled.div`
     top: 50%;
     transform: translateY(-50%);
     color: white;
-    font-size: 20px; /* Icon size */
+    font-size: 20px;
   }
 
   .input-field {
-    padding-left: 40px; /* Space for icon inside the input */
+    padding-left: 40px;
   }
-  /* Style for h3 */
-/* Style for h3 */
-h3 {
-  font-family: 'Brush Script MT', cursive; /* Cursive font */
-  font-weight: bold;
-  font-size: 3rem;
-  color: white;
-  text-align: center;
-  margin-bottom: 20px;
-}
 
+  h3 {
+    font-family: "Brush Script MT", cursive;
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
 `;
+
 const RightSection = styled.div`
   flex: 1;
   max-width: 500px;
-  
-  img {
+
+  canvas {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+
+    @media (max-width: 768px) {
+      height: 300px;
+    }
   }
 `;
 
@@ -194,45 +195,6 @@ const Footer = styled.footer`
   background: rgba(255, 255, 255, 0.1);
 `;
 
-const Stars = (props) => {
-    const ref = useRef();
-    const [sphere] = useState(() =>
-        random.inSphere(new Float32Array(5000), { radius: 1.2 })
-    );
-
-    useFrame((state, delta) => {
-        ref.current.rotation.x -= delta / 10;
-        ref.current.rotation.y -= delta / 15;
-    });
-
-    return (
-        <group rotation={[0, 0, Math.PI / 4]}>
-            <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
-                <PointMaterial
-                    transparent
-                    color="#f272c8"
-                    size={0.002}
-                    sizeAttenuation={true}
-                    depthWrite={false}
-                />
-            </Points>
-        </group>
-    );
-};
-
-const StyledStarsCanvas = () => {
-    return (
-        <StyledCanvasWrapper>
-            <Canvas camera={{ position: [0, 0, 1] }}>
-                <Suspense fallback={null}>
-                    <Stars />
-                </Suspense>
-                <Preload all />
-            </Canvas>
-        </StyledCanvasWrapper>
-    );
-};
-
 const ContactMe = () => {
 
     const [isLaunched, setIsLaunched] = useState(false);
@@ -240,17 +202,16 @@ const ContactMe = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setIsLaunched(true); // Start the rocket animation
+        setIsLaunched(true); 
 
-        // Show success message after rocket launches
         setTimeout(() => {
             setShowMessage(true);
-        }, 2000); // Wait 2 seconds before showing message
+        }, 2000); 
     };
 
     const handleReset = () => {
-        setIsLaunched(false);  // Bring the rocket back
-        setShowMessage(false); // Hide the message
+        setIsLaunched(false); 
+        setShowMessage(false); 
     };
 
     return (
@@ -260,8 +221,7 @@ const ContactMe = () => {
             </HeroBg>
             <Heading>Contact Me</Heading>
             <Container>
-           {/* Left Section - Contact Form OR Success Message */}
-           <LeftSection>
+              <LeftSection>
                 <AnimatePresence>
                     {!showMessage ? (
                         <motion.div
@@ -301,8 +261,6 @@ const ContactMe = () => {
                     )}
                 </AnimatePresence>
             </LeftSection>
-
-            {/* Right Section - Rocket Animation */}
             <RightSection>
                 <AnimatePresence>
                     {!isLaunched && !showMessage && (
@@ -334,10 +292,9 @@ const ContactMe = () => {
                     )}
                 </AnimatePresence>
             </RightSection>
-
             </Container>
             <Footer>
-                <span>© 2025 Made by Budagam Sai Gopi | b.saigopi@gmail.com</span>
+                <span>© 2025 Made by | Sai Gopi  </span>
             
             </Footer>
         </WorkStyles>

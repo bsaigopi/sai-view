@@ -45,10 +45,6 @@ const Links = styled.div`
   }
 `;
 
-const Logo = styled.img`
-  height: 50px;
-`;
-
 const List = styled.ul`
   display: flex;
   gap: 20px;
@@ -79,36 +75,6 @@ const ListItem = styled.li`
   &:hover {
     background-color: #ff3a3a;
     color: #fff;
-  }
-`;
-
-const Icons = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const Icon = styled.img`
-  width: 20px;
-  cursor: pointer;
-`;
-
-const Button = styled.button`
-  width: 100px;
-  padding: 10px;
-  background-color: #da4ea2;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #ffda4e;
-    color: black;
   }
 `;
 
@@ -166,7 +132,7 @@ const ScrollToTopButton = styled.button`
   align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
-  z-index: 9999; /* High z-index to make sure it's clickable */
+  z-index: 9999; 
   
   &:hover {
     transform: scale(1.1);
