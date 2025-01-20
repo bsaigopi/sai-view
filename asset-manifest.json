@@ -1,9 +1,8 @@
 {
   "files": {
-    "main.css": "/sai-view/static/css/main.72fc69a0.css",
-    "main.js": "/sai-view/static/js/main.3ea5b1db.js",
-    "static/js/453.9cedf3b2.chunk.js": "/sai-view/static/js/453.9cedf3b2.chunk.js",
-    "static/media/wall1.jpg": "/sai-view/static/media/wall1.3ffa1f0ce2518bc3125a.jpg",
+    "main.css": "/sai-view/static/css/main.51a60fb2.css",
+    "main.js": "/sai-view/static/js/main.46de2407.js",
+    "static/js/206.220e51af.chunk.js": "/sai-view/static/js/206.220e51af.chunk.js",
     "static/media/2136.jpg": "/sai-view/static/media/2136.9ab502aabb248129f475.jpg",
     "static/media/usericons.jpg": "/sai-view/static/media/usericons.1360bed9da8958440802.jpg",
     "static/media/api.png": "/sai-view/static/media/api.5eb7d72c2eece0276bb7.png",
@@ -12,7 +11,7 @@
     "static/media/396946297_11528323.jpg": "/sai-view/static/media/396946297_11528323.28bf44bc80ac990fa60a.jpg",
     "static/media/4794132_4794132.jpg": "/sai-view/static/media/4794132_4794132.1e7b2c5e203726c24f4a.jpg",
     "static/media/2458888_332626-P9XZBO-245.jpg": "/sai-view/static/media/2458888_332626-P9XZBO-245.232a61d07cc36765b733.jpg",
-    "static/media/herooooo.png": "/sai-view/static/media/herooooo.0c24abb2b1e259aada8a.png",
+    "static/media/landdd.webp": "/sai-view/static/media/landdd.189ec1551310c87fca2a.webp",
     "static/media/3271200_478489-PGPWBR-73.jpg": "/sai-view/static/media/3271200_478489-PGPWBR-73.91e79f204e426dc9be7b.jpg",
     "static/media/psql.png": "/sai-view/static/media/psql.2cd8fff98c07be4337bd.png",
     "static/media/reactnative.png": "/sai-view/static/media/reactnative.dbf225c5db0bf2410bb8.png",
@@ -22,7 +21,9 @@
     "static/media/node-2.png": "/sai-view/static/media/node-2.aa03126856c21e045dd9.png",
     "static/media/angular.png": "/sai-view/static/media/angular.26893ba4fbd72fa9faeb.png",
     "static/media/aws-prac.png": "/sai-view/static/media/aws-prac.1d4d9fa250269a5b5067.png",
+    "static/media/azuree.png": "/sai-view/static/media/azuree.6e06c048b84b463cc4ab.png",
     "static/media/next.png": "/sai-view/static/media/next.f1dadb379a790570a405.png",
+    "static/media/wordpress.jpg": "/sai-view/static/media/wordpress.6c20dd2612d4456b75a7.jpg",
     "static/media/go-1-.png": "/sai-view/static/media/go-1-.8be09489ebb08e34b668.png",
     "static/media/gcp.png": "/sai-view/static/media/gcp.527ffb43e662894bb0c8.png",
     "static/media/vue.png": "/sai-view/static/media/vue.bc92a35817104e7d9091.png",
@@ -33,13 +34,10 @@
     "static/media/amazon-web-services.png": "/sai-view/static/media/amazon-web-services.b36cb2cf3b530ecbae33.png",
     "static/media/java.svg": "/sai-view/static/media/java.96328a7a7d7c814ced4d0316ed82d718.svg",
     "static/media/figma.avif": "/sai-view/static/media/figma.f751b30a541ef7c3b442.avif",
-    "index.html": "/sai-view/index.html",
-    "main.72fc69a0.css.map": "/sai-view/static/css/main.72fc69a0.css.map",
-    "main.3ea5b1db.js.map": "/sai-view/static/js/main.3ea5b1db.js.map",
-    "453.9cedf3b2.chunk.js.map": "/sai-view/static/js/453.9cedf3b2.chunk.js.map"
+    "index.html": "/sai-view/index.html"
   },
   "entrypoints": [
-    "static/css/main.72fc69a0.css",
-    "static/js/main.3ea5b1db.js"
+    "static/css/main.51a60fb2.css",
+    "static/js/main.46de2407.js"
   ]
 }
