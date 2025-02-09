@@ -2,6 +2,8 @@ import React, { useState,useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import iphonewallpaper from "../images/phonewall.jpg"
 import sicon from "../images/usericons.jpg"
+import { FaPaperPlane } from "react-icons/fa";
+
 
 const wave = keyframes`
   0% { transform: rotate(0deg); }
@@ -153,7 +155,7 @@ const ChatMessages = styled.div`
 const ChatInputContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  padding: 5px;
 `;
 
 const CloseButton = styled.button`
@@ -215,19 +217,32 @@ const ChatBot = () => {
   const [chatStarted, setChatStarted] = useState(false);
 
   const predefinedResponses = {
-    default: "I'm sorry, I didn't understand that. Can you ask in a different way?",
-    technologies: "I specialize in React, Python, and Angular.",
+    default: "I'm sorry, I didn't understand that. Can you ask in a different way? or you can reach out to b.saigopi@gmail.com",
+    hi: "Hi! How are you doing today?",
+    hello: "Hey there! How’s your day going?",
+    "how are you": "I'm doing great! Thanks for asking. How about you?",
+    "how are you doing": "I'm doing well! What about you?",
+    "what is your name": "I'm assistant for SAIGOPI BUDAGM ! How can I assist you today?",
+    "what do you do": "SAI is a software developer, specializing in building web and mobile applications.",
+    "how is sai": "Sai is doing well! He's a very talented developer.",
+    "what does he know": "Sai knows all the technologies, from front-end to back-end and databases. He builds amazing web and mobile applications.",
+    "what are Sai strengths and weaknesses": "Sai's strengths include delivering work on time and his dedication, even working late hours when necessary. He doesn’t have many weaknesses, though he sometimes pushes himself too hard.",
+    "which company does Sai work for": "Currently, Sai is working for a leading banking company.",
+    "how many years Sai is been in US": "I’ve been in the US for almost 6 years now.",
+    "how much experience do Sai have": "Sai have extensive experience in software development, particularly in front-end and back-end technologies, and building scalable applications.",
+    technologies: "Sai specialize in React, Python, Angular, and working with databases like PostgreSQL and MongoDB.",
     react: "React is a library for building user interfaces, especially for single-page applications.",
-    "what projects you worked on?": "I've worked on e-commerce platforms, chat applications, and real-time dashboards.",
-    trends: "I stay updated by following tech blogs, attending webinars, and contributing to open-source projects.",
-    "favorite language": "I love working with JavaScript because of its versatility and ecosystem.",
-    "coding tips": "Always write clean and modular code. Use meaningful variable names and comment your logic.",
-    "front-end tools": "I recommend tools like Webpack, Babel, and libraries like React and Material-UI for front-end development.",
-    "handle bugs": "I use a systematic approach: replicate the issue, debug with tools like Chrome DevTools, and write tests to prevent future occurrences.",
-    "scalable apps": "Designing scalable apps involves using microservices, caching mechanisms, and efficient database designs.",
-    "learning python": "I recommend resources like the official Python documentation, freeCodeCamp, and books like 'Automate the Boring Stuff with Python.'",
-    email: "You can reach me at example@example.com.",
-  };
+    "what projects have you worked on": "Sai have worked on e-commerce platforms, real-time dashboards, and social media apps.",
+    trends: "Sai stay updated by following tech blogs, attending webinars, and contributing to open-source projects.",
+    "favorite language": "Sai love working with JavaScript because of its versatility and ecosystem.",
+    "coding tips": "Sai Always write clean and modular code. Use meaningful variable names and comment your logic.",
+    "front-end tools": "Sai recommend tools like Webpack, Babel, and libraries like React and Material-UI for front-end development.",
+    "handling bugs": "Sai use a systematic approach: replicate the issue, debug with tools like Chrome DevTools, and write tests to prevent future occurrences.",
+    "scalable apps": "Sai Designing scalable apps involves using microservices, caching mechanisms, and efficient database designs.",
+    "learning python": "Sai recommend resources like the official Python documentation, freeCodeCamp, and books like 'Automate the Boring Stuff with Python.'",
+    email: "If you need further assistance, feel free to reach out at b.saigopi@gmail.com",
+};
+  
 
   const getBotResponse = (userMessage) => {
     const lowerCaseMessage = userMessage.toLowerCase().trim();
@@ -290,35 +305,34 @@ const ChatBot = () => {
           <img src={sicon} alt="User" width="40" height="40" />
         </UserIcon>
         <ChatContainer>
-          <ChatMessages>
-            {/* Initial suggested message */}
-            {messages.length === 0 && (
-              <ChatMessage isUser={false}>
-                Hi! I can help you with various things. Try asking about "technologies" or "projects"!
-              </ChatMessage>
-            )}
-            {messages.map((msg, index) => (
-              <ChatMessage key={index} isUser={msg.isUser}>
-                {msg.text}
-              </ChatMessage>
-            ))}
-            {isTyping && <ChatMessage isUser={false}>Typing...</ChatMessage>}
-          </ChatMessages>
-          <form onSubmit={handleUserMessage}>
-            <ChatInputContainer>
-              <ChatInput
-                type="text"
-                placeholder="Type something..."
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-              />
-              <button type="submit" style={{ display: "none" }}>
-                Send
-              </button>
-            </ChatInputContainer>
-          </form>
-          <CloseButton onClick={handleCloseChat}>Close Chat</CloseButton>
-        </ChatContainer>
+            <ChatMessages>
+              {messages.length === 0 && (
+                <ChatMessage isUser={false}>
+                  Hi! I can help you with various things. Try asking about "technologies" or "projects"!
+                </ChatMessage>
+              )}
+              {messages.map((msg, index) => (
+                <ChatMessage key={index} isUser={msg.isUser}>
+                  {msg.text}
+                </ChatMessage>
+              ))}
+              {isTyping && <ChatMessage isUser={false}>Typing...</ChatMessage>}
+            </ChatMessages>
+            <form onSubmit={handleUserMessage}>
+              <ChatInputContainer>
+                <ChatInput
+                  type="text"
+                  placeholder="Type something..."
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                />
+                <button type="submit" style={{ background: "transparent", border: "none", cursor: "pointer" }}>
+                  <FaPaperPlane size={20} color="#007bff" />
+                </button>
+              </ChatInputContainer>
+            </form>
+            <CloseButton onClick={handleCloseChat}>Close Chat</CloseButton>
+          </ChatContainer>
       </InnerFrame>
     </FrameWrapper>
   );

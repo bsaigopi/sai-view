@@ -20,6 +20,14 @@ import GCP from "../images/gcp.png"
 import boot from "../images/boot.jpeg"
 import figma from "../images/figma.avif"
 import react from "../images/reactt.png"
+import github  from "../images/github.png"
+import docker from "../images/dockerr.webp"
+import mysql from "../images/mysql.png"
+import splunk from "../images/splun.png"
+import mongo from "../images/mongo.png"
+import newrelic from "../images/new.png"
+import postman from "../images/postamn.png"
+import swagger from "../images/swagger.png"
 import Angular from "../images/angular.png"
 import Mac from "./Mac"
 import { OrbitControls, Stage, PerspectiveCamera } from "@react-three/drei";
@@ -316,6 +324,11 @@ const Skills = () => {
               <Image src={figma} alt="Python Logo" />
               <p>FIGMA</p>
             </Box>
+
+            <Box>
+              <Image src={postman} alt="Python Logo" />
+              <p>Postman </p>
+            </Box>
             <Box>
               <Image src={GCP} alt="Python Logo" />
               <p>GCP</p>
@@ -324,7 +337,37 @@ const Skills = () => {
               <Image src={shopify} alt="Python Logo" />
               <p>Shopify </p>
             </Box>
+            <Box>
+              <Image src={mysql} alt="Python Logo" />
+              <p>My Sql </p>
+            </Box>
+            <Box>
+              <Image src={github} alt="Python Logo" />
+              <p>Github </p>
+            </Box>
+            <Box>
+              <Image src={splunk} alt="Python Logo" />
+              <p>Splunk </p>
+            </Box>
+            <Box>
+              <Image src={newrelic} alt="Python Logo" />
+              <p>New Relic </p>
+            </Box>
+            <Box>
+              <Image src={mongo} alt="Python Logo" />
+              <p>Mongo DB </p>
+            </Box>
 
+            <Box>
+              <Image src={swagger} alt="Python Logo" />
+              <p>Swagger </p>
+            </Box>
+
+           
+            <Box>
+              <Image src={docker} alt="Python Logo" />
+              <p>Docker </p>
+            </Box>
             <Box>
               <Image src={wordpress} alt="Python Logo" />
               <p>Wordpress </p>

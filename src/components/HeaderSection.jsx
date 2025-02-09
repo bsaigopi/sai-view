@@ -79,7 +79,7 @@ const ListItem = styled.li`
 `;
 
 const UserName = styled.div`
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   font-family: "Arial, sans-serif";
   animation: ${highlightAnimation} 3s infinite;
@@ -185,7 +185,7 @@ const HeaderSection = () => {
               <ListItem onClick={() => scrollToSection("about-me")}>About Me</ListItem>
               <ListItem onClick={() => scrollToSection("projects")}>Projects</ListItem>
               <ListItem onClick={() => scrollToSection("skills")}>Skills</ListItem>
-              <ListItem onClick={() => scrollToSection("awards")}>Awards</ListItem>
+              <ListItem onClick={() => scrollToSection("awards")}>Certification's</ListItem>
               <ListItem onClick={() => scrollToSection("contact-me")}>Contact Me</ListItem>
             </List>
           </Container>

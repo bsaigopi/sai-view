@@ -6,7 +6,7 @@ import {  OrbitControls, Stage, PerspectiveCamera } from "@react-three/drei";
 import Rocket from './Modelrocketemail'
 import { motion, AnimatePresence } from "framer-motion";
 import StyledStarsCanvas from "../canva/Stars";
-
+import sendEmail from "../utils/email";  
 
 const WorkStyles = styled.div`
   height: 100vh;
@@ -197,12 +197,21 @@ const Footer = styled.footer`
 
 const ContactMe = () => {
 
+    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
     const [isLaunched, setIsLaunched] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
+
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData({ ...formData, [name]: value });
+  };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsLaunched(true); 
+
+        sendEmail(formData);
+        setFormData({ name: "", email: "", message: "" });
 
         setTimeout(() => {
             setShowMessage(true);
@@ -212,6 +221,8 @@ const ContactMe = () => {
     const handleReset = () => {
         setIsLaunched(false); 
         setShowMessage(false); 
+        setFormData({ name: "", email: "", message: "" });
+
     };
 
     return (
@@ -234,15 +245,15 @@ const ContactMe = () => {
                             <form onSubmit={handleSubmit}>
                                 <div className="input-container">
                                     <FaUser className="input-icon" />
-                                    <input className="input-field" type="text" placeholder="Your Name" required />
+                                    <input className="input-field" type="text"  name="name" placeholder="Your Name" required  value={formData.name}  onChange={handleChange}/>
                                 </div>
                                 <div className="input-container">
                                     <FaEnvelope className="input-icon" />
-                                    <input className="input-field" type="email" placeholder="Your Email" required />
+                                    <input className="input-field" type="email" name="email"  placeholder="Your Email" required value={formData.email} onChange={handleChange}  />
                                 </div>
                                 <div className="input-container">
                                     <FaRegComment className="input-icon" />
-                                    <textarea placeholder="Your Message" rows="4" required></textarea>
+                                    <textarea placeholder="Your Message" rows="4" name="message" required value={formData.message} onChange={handleChange} ></textarea>
                                 </div>
                                 <button type="submit">Send Message</button>
                             </form>
@@ -294,8 +305,7 @@ const ContactMe = () => {
             </RightSection>
             </Container>
             <Footer>
-                <span>© 2025 Made by | Sai Gopi  </span>
-            
+            <span>© 2025 Developed by | Budagam Sai Gopi | Powered by React</span>
             </Footer>
         </WorkStyles>
     );

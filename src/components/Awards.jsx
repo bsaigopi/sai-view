@@ -106,14 +106,16 @@ const Awards = () => {
       <HeroBg>
         <StyledStarsCanvas />
       </HeroBg>
-      <Heading>Awards</Heading>
+      <Heading>Certification's</Heading>
       <MiddleSection>
         <BadgeContainer>
-          <img src={awsdev} alt="Developer Badge" />
+          <a href="https://www.credly.com/badges/d3a9ce6b-33f2-4b3e-8bfb-177b6f4f1072/linked_in_profile" target="_blank" rel="noopener noreferrer">
+          <img src={awsdev} alt="Developer Badge" /></a>
           <BadgeText>Developer Badge</BadgeText>
         </BadgeContainer>
         <BadgeContainer>
-          <img src={awspra} alt="Practitioner Badge" />
+        <a href="https://www.credly.com/badges/31fa074a-02e8-45b4-909b-e469b0e40709/linked_in_profile" target="_blank" rel="noopener noreferrer">
+          <img src={awspra} alt="Practitioner Badge" /></a>
           <BadgeText>Practitioner Badge</BadgeText>
         </BadgeContainer>
       </MiddleSection>

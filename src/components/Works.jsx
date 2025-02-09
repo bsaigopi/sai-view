@@ -8,6 +8,7 @@ import ref from '../images/3226221_43166.jpg'
 import pmt from '../images/3271200_478489-PGPWBR-73.jpg'
 import vms from '../images/396946297_11528323.jpg'
 import shop from '../images/4794132_4794132.jpg'
+import bank from "../images/bank.jpg"
 import home from '../images/2458888_332626-P9XZBO-245.jpg'
 import StyledStarsCanvas from "../canva/Stars";
 
@@ -292,13 +293,13 @@ const Works = () => {
   const scrollRef = useRef(null);
 
   const projectData = [
+    { title: "USA Leading Bank", description: "Providing innovative banking solutions with cutting-edge technology for seamless online banking experiences.", image: bank },
     { title: "Oil and Gas Platform", description: "A web app optimizing operations for oil and gas companies.", image: oil },
     { title: "RFP Collaboration Hub", description: "A platform streamlining team collaboration during RFPs.", image: ref },
     { title: "Housing Communication Platform", description: "An intuitive app for managing housing communication seamlessly.", image: home },
     { title: "Loan Processing Application", description: "A web app simplifying loan workflows for faster approvals.", image: loan },
     { title: "Performance Management Tool", description: "A system to track, evaluate, and boost employee performance.", image: pmt },
     { title: "People Survey App", description: "A React Native app designed for quick and insightful surveys.", image: vms },
-    { title: "E-commerce Websites", description: "Custom Shopify and WordPress solutions for online stores.", image: shop },
     { title: "E-commerce Websites", description: "Custom Shopify and WordPress solutions for online stores.", image: shop },
   ];
 

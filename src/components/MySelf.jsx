@@ -142,13 +142,11 @@ const MySelf = () => {
         <RightSection>
           <Heading>What I Do</Heading>
           <WhatidoText>
-    ⚡ Build dynamic frontends with React & Angular, and powerful backends using Django, Node.js, and Java Spring Boot.
-    {"\n"}🔧 Develop & deploy RESTful APIs for seamless data exchange.
-    {"\n"}📊 Implement logging & monitoring systems for efficient tracking and analysis.
-    {"\n"}🚀 Focused on creating scalable, high-performance solutions.
-    {/* {"\n"}🔗 Expertise in API architecture, backend development, and web design.
-    {"\n"}💡 Passionate about delivering innovative digital experiences. */}
-  </WhatidoText>
+          <strong>⚡ Build dynamic frontends with React & Angular, and powerful backends using Django, Node.js, and Java Spring Boot.</strong>
+          {"\n"}<strong>🔧 Develop & deploy RESTful APIs for seamless data exchange.</strong>
+          {"\n"}<strong>📊 Implement logging & monitoring systems for efficient tracking and analysis.</strong>
+          {"\n"}<strong>🚀 Focused on creating scalable, high-performance solutions.</strong>
+        </WhatidoText>
           <BoxContainer>
             <Box>
               <Icon>API</Icon>
