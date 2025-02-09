@@ -1,11 +1,12 @@
 {
   "files": {
     "main.css": "/sai-view/static/css/main.51a60fb2.css",
-    "main.js": "/sai-view/static/js/main.cb2783cf.js",
-    "static/js/206.220e51af.chunk.js": "/sai-view/static/js/206.220e51af.chunk.js",
+    "main.js": "/sai-view/static/js/main.1144de5e.js",
+    "static/js/206.2db7b2fc.chunk.js": "/sai-view/static/js/206.2db7b2fc.chunk.js",
     "static/media/2136.jpg": "/sai-view/static/media/2136.9ab502aabb248129f475.jpg",
     "static/media/usericons.jpg": "/sai-view/static/media/usericons.1360bed9da8958440802.jpg",
     "static/media/api.png": "/sai-view/static/media/api.5eb7d72c2eece0276bb7.png",
+    "static/media/bank.jpg": "/sai-view/static/media/bank.9263514902e8d448bbc7.jpg",
     "static/media/57040.jpg": "/sai-view/static/media/57040.8ba7cacc3a9155b4b816.jpg",
     "static/media/3226221_43166.jpg": "/sai-view/static/media/3226221_43166.24ba6381d4cf91c23e54.jpg",
     "static/media/396946297_11528323.jpg": "/sai-view/static/media/396946297_11528323.28bf44bc80ac990fa60a.jpg",
@@ -21,6 +22,7 @@
     "static/media/node-2.png": "/sai-view/static/media/node-2.aa03126856c21e045dd9.png",
     "static/media/angular.png": "/sai-view/static/media/angular.26893ba4fbd72fa9faeb.png",
     "static/media/aws-prac.png": "/sai-view/static/media/aws-prac.1d4d9fa250269a5b5067.png",
+    "static/media/swagger.png": "/sai-view/static/media/swagger.a553c88ebe324532c62a.png",
     "static/media/azuree.png": "/sai-view/static/media/azuree.6e06c048b84b463cc4ab.png",
     "static/media/next.png": "/sai-view/static/media/next.f1dadb379a790570a405.png",
     "static/media/wordpress.jpg": "/sai-view/static/media/wordpress.6c20dd2612d4456b75a7.jpg",
@@ -32,12 +34,14 @@
     "static/media/phonewall.jpg": "/sai-view/static/media/phonewall.90e3082e71febcd8256c.jpg",
     "static/media/JavaScript-logo.png": "/sai-view/static/media/JavaScript-logo.3ade557547ee3603cbf9.png",
     "static/media/amazon-web-services.png": "/sai-view/static/media/amazon-web-services.b36cb2cf3b530ecbae33.png",
+    "static/media/mysql.png": "/sai-view/static/media/mysql.d7d548afccbacf21345b.png",
     "static/media/java.svg": "/sai-view/static/media/java.96328a7a7d7c814ced4d0316ed82d718.svg",
+    "static/media/dockerr.webp": "/sai-view/static/media/dockerr.9691c2e4abae1394d348.webp",
     "static/media/figma.avif": "/sai-view/static/media/figma.f751b30a541ef7c3b442.avif",
     "index.html": "/sai-view/index.html"
   },
   "entrypoints": [
     "static/css/main.51a60fb2.css",
-    "static/js/main.cb2783cf.js"
+    "static/js/main.1144de5e.js"
   ]
 }
